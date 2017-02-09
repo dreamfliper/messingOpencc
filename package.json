@@ -1,0 +1,34 @@
+{
+  "name": "electron-quick-start",
+  "version": "1.0.0",
+  "description": "A minimal Electron application",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "postinstall" : "./node_modules/.bin/electron-rebuild"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/electron/electron-quick-start.git"
+  },
+  "keywords": [
+    "Electron",
+    "quick",
+    "start",
+    "tutorial",
+    "demo"
+  ],
+  "author": "GitHub",
+  "license": "CC0-1.0",
+  "devDependencies": {
+    "electron": "^1.4.1",
+    "electron-rebuild": "^1.5.7"
+  },
+  "bugs": {
+    "url": "https://github.com/electron/electron-quick-start/issues"
+  },
+  "homepage": "https://github.com/electron/electron-quick-start#readme",
+  "dependencies": {
+    "opencc": "=1.0.4"
+  }
+}
