@@ -1,9 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
     <title>Hello World!</title>
   </head>
+  <link rel="stylesheet" href="./lib/kickstart.min.css" />
+  <script type="text/javascript" src="./lib/kickstart.min.js"></script>
   <script src="https://unpkg.com/vue/dist/vue.js"></script>
   <body>
     <h1>Hello World!</h1>
@@ -15,15 +19,28 @@
   <div id="app">
   {{ message }}
   </div>
+  <table class="table table-zebra table-hover table-blank">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody id="tableview">
+    <template v-for="file in files">
+    <tr @click="show">
+      <th>{{ file.name }}</th>
+      <th>{{ file.add }}</th>
+    </tr>
+    </template> 
+  </tbody>
+  </table>
+  <div id="content" v-if="store">
+    <p>12345-098</p>
+  </div>
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')
     require('./file.js')
-    var app = new Vue({
-    el: '#app',
-    data: {
-      message: 'Hello Vue!'
-      }
-    })
   </script>
 </html>

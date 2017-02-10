@@ -4,6 +4,9 @@ var mode = ["s2t","t2s","s2tw","tw2s","s2twp","tw2sp"]
 // Load the default Simplified to Traditional config
 var opencc = new OpenCC(mode[4]+".json")
 
+opencc.convert("汉字", (err, converted) => {
+  console.log(converted)
+});
 document.ondragover = document.ondrop = (ev) => {
   ev.preventDefault()
 }
