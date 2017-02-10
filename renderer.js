@@ -1,7 +1,16 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
-var store=0
+var store = {
+  debug: true,
+  state: {
+    showcontent: true
+  },
+  toggle () {
+    this.debug && console.log(this.state.showcontent)
+    this.state.showcontent = !this.state.showcontent
+  },
+}
 
 var app = new Vue({
   el: '#app',
@@ -9,6 +18,7 @@ var app = new Vue({
     message: 'Hello Vue!'
     }
 })
+
 var tableview = new Vue({
   el: '#tableview',
   data: {
@@ -17,17 +27,18 @@ var tableview = new Vue({
       { name: 'Learn Vue' ,add:'sample2'},
       { name: 'Build something ',add:'sample3' }
     ],
-    store
+    sharestate:store.state
   },
   methods:{
     show:function (event) {
-      store=!store
+      store.toggle()
     }
   }
 })
-var vm = new Vue({
+
+var content = new Vue({
   el: "#content",
   data:{
-    store
+    sharestate:store.state
   }
 })
