@@ -1,46 +1,51 @@
 <!DOCTYPE html>
 <html>
+  <link rel="stylesheet" href="./lib/kickstart.min.css" />
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
-    <title>Hello World!</title>
+    <title>subTranslate_Dev</title>
   </head>
-  <link rel="stylesheet" href="./lib/kickstart.min.css" />
+  <link rel="stylesheet" href="./index.css" />
   <script type="text/javascript" src="./lib/kickstart.min.js"></script>
   <script src="./lib/vue.js"></script>
   <body>
-    <h1>Hello World!</h1>
-    <!-- All of the Node.js APIs are available in this renderer process. -->
-    We are using Node.js <script>document.write(process.versions.node)</script>,
-    Chromium <script>document.write(process.versions.chrome)</script>,
-    and Electron <script>document.write(process.versions.electron)</script>.
-  </body>
-  <div id="app">
-  {{ message }}
-  </div>
+  <h2>subTranslate</h2>
   <table class="table table-zebra table-hover table-blank">
   <thead>
     <tr>
+      <th>#</th>
       <th>Name</th>
       <th>Address</th>
     </tr>
   </thead>
   <tbody id="tableview">
-    <template v-for="file in files">
-    <tr @click="show">
+    <template v-for="(file,index) in files">
+    <tr @click="show(index,$event)">
+      <th>{{ index }}</th>
       <th>{{ file.name }}</th>
       <th>{{ file.add }}</th>
     </tr>
     </template> 
   </tbody>
   </table>
-  <div id="content" v-if="sharestate.showcontent">
-    <p>12345-098</p>
+<!--   <div id="defaultpic" v-if="!show">
+    werqwerqwe
+  </div>--> 
+  <div class="col-left-3 col-9 container container-green" id="content" v-if="sharestate.showcontent">
+  <!-- TODO:transition -->
+  <div class="modal-mask" @click="toggle">
+    <div class="modal-container">
+    <header class="nav">Content preview</header>
+    <pre>{{getSelectedText()}}</pre>
   </div>
+  </div>
+  </div>
+  </body>
   <script>
     // You can also require other files to run in this process
     require('./renderer.js')
-    require('./file.js')
+    // require('./file.js')
   </script>
 </html>

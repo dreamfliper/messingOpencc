@@ -1,6 +1,5 @@
 var OpenCC = require('opencc')
 var mode = ["s2t","t2s","s2tw","tw2s","s2twp","tw2sp"]
-
 // Load the default Simplified to Traditional config
 var opencc = new OpenCC(mode[4]+".json")
 
@@ -12,7 +11,10 @@ document.ondragover = document.ondrop = (ev) => {
 }
 
 document.body.ondrop = (ev) => {
-  console.log(ev.dataTransfer.files[0].path)
+  console.log(ev.dataTransfer.files[0].name)
+  store.files.push(
+    {name:ev.dataTransfer.file[0].name},
+    {add :ev.dataTransfer.file[0].path})
   ev.preventDefault()
   var file = ev.dataTransfer.files[0]
   if(file){
@@ -46,7 +48,7 @@ function loaded(evt) {
   // Obtain the read file data
   var fileString = evt.target.result;
   opencc.convert(fileString, (err, converted) => {
-  	console.log(converted)
+  	// console.log(converted)
 	})
 	{
   	console.log("start converting")
