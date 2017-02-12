@@ -1,0 +1,45 @@
+// #content{
+// 	position: fixed;
+//     top: 10%;
+//     right: 0px;
+//     height: 90%;
+// 	text-overflow:ellipsis;
+//     overflow:scroll;
+// }
+.nav{
+	position: fixed;
+	width: 100%;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+}
+// h2{
+// 	text-align: center;
+// }
+.modal-mask {
+  position: fixed;
+  z-index: 9998;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, .5);
+  display: table;
+  transition: opacity .3s ease;
+}
+.modal-container {
+	position: fixed;
+  width: 80%;
+  height: 90%;
+  top: 10%;
+  right: 0px;
+  margin: 0px auto;
+  background-color: #fff;
+  border-radius: 2px;
+  // box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+  transition: all .3s ease;
+  font-family: Helvetica, Arial, sans-serif;
+  text-overflow:ellipsis;
+  overflow:scroll;
+}
