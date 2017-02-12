@@ -8,10 +8,26 @@
     <title>subTranslate_Dev</title>
   </head>
   <link rel="stylesheet" href="./index.css" />
+  <link rel="stylesheet" href="./lib/toggle-switch.css" />
   <script type="text/javascript" src="./lib/kickstart.min.js"></script>
   <script src="./lib/vue.js"></script>
   <body>
   <h2>subTranslate</h2>
+  <fieldset>
+  <legend>View</legend>
+  <div class="switch-toggle switch-candy switch-candy-blue">
+    <input id="week" name="view" type="radio" checked>
+    <label for="week" onclick="">Week</label>
+
+    <input id="month" name="view" type="radio">
+    <label for="month" onclick="">Month</label>
+
+    <input id="day" name="view" type="radio">
+    <label for="day" onclick="">Day</label>
+
+    <a></a>
+  </div>
+</fieldset>
   <table class="table table-zebra table-hover table-blank">
   <thead>
     <tr>
