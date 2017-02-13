@@ -13,35 +13,37 @@
   <script src="./lib/vue.js"></script>
   <body>
   <h2>subTranslate</h2>
-  <fieldset>
-  <legend>View</legend>
-  <div class="switch-toggle switch-candy switch-candy-blue">
-    <input id="week" name="view" type="radio" checked>
-    <label for="week" onclick="">Week</label>
-
-    <input id="month" name="view" type="radio">
-    <label for="month" onclick="">Month</label>
-
-    <input id="day" name="view" type="radio">
-    <label for="day" onclick="">Day</label>
-
+  <div class="row">
+  <!-- <fieldset class="col-6"> -->
+  <div class="switch-toggle switch-ios col-6">
+    <input id="totchinese" name="view" type="radio" checked>
+    <label for="totchinese" onclick="">簡繁</label>
+    <input id="toschinese" name="view" type="radio">
+    <label for="toschinese" onclick="">繁簡</label>
     <a></a>
   </div>
-</fieldset>
+  <!-- </fieldset> -->
+  <label class="switch-light switch-ios col-left-4 col-2" onclick="">
+    <input type="checkbox">
+    <span>
+      <span>詞彙轉換</span>
+      <span>詞彙轉換</span>
+      <a></a>
+    </span>
+  </label>
+  </div>
+
+<!-- MainTable -->
   <table class="table table-zebra table-hover table-blank">
   <thead>
     <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>Address</th>
+      <th>#</th><th>Name</th><th>Address</th>
     </tr>
   </thead>
   <tbody id="tableview">
     <template v-for="(file,index) in files">
     <tr @click="show(index,$event)">
-      <th>{{ index }}</th>
-      <th>{{ file.name }}</th>
-      <th>{{ file.add }}</th>
+      <th>{{ index }}</th><th>{{ file.name }}</th><th>{{ file.add }}</th>
     </tr>
     </template> 
   </tbody>

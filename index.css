@@ -17,6 +17,9 @@ html,body{
 // h2{
 // 	text-align: center;
 // }
+.switch-toggle{
+	height: 32px;
+}
 .modal-mask {
   position: fixed;
   z-index: 9998;
@@ -43,3 +46,4 @@ html,body{
   text-overflow:ellipsis;
   overflow:scroll;
 }
+
