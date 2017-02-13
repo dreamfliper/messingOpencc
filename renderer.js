@@ -1,6 +1,9 @@
 // This file is required by the index.html file and will
 // be executed in the renderer process for that window.
 // All of the Node.js APIs are available in this process.
+var OpenCC = require('opencc')
+var mode='s2tw',pflag=false
+
 var store = {
   debug: true,
   state: {
@@ -17,6 +20,9 @@ var store = {
   },
   getselected(){
     return this.state.selected
+  },
+  translateselected(){
+    this.files[this.getselected()].text=opencc.convertSync(this.files[this.getselected()].text)
   },
   files: [
     // { name: 'Learn JavaScript' ,add: 'sample1',text:'sample1'},
@@ -48,7 +54,12 @@ var content = new Vue({
   },
   methods:{
     getSelectedText:function () {
-      return store.files[store.getselected()].text
+      var tmode
+      tmode=(pflag) ? mode+'p':mode
+      // store.translateselected()
+      console.log(tmode)
+      var opencc= new OpenCC(tmode+".json")
+      return opencc.convertSync(store.files[store.getselected()].text)
     },
     toggle:function(){
       store.toggle()
@@ -63,16 +74,30 @@ var content = new Vue({
 //   }
 // })
 
+var setting = new Vue({
+  el: "#setting",
+  methods:{
+    s2tw:function () {
+      mode='s2tw'
+    },
+    tw2s:function () {
+      mode='tw2s'
+    },
+    pToggle:function () {
+      pflag=!pflag
+    },
+  }
+})
 
 
-var OpenCC = require('opencc')
-var mode = ["s2t","t2s","s2tw","tw2s","s2twp","tw2sp"]
-// Load the default Simplified to Traditional config
-var opencc = new OpenCC(mode[4]+".json")
+// var mode = ["s2tw","tw2s","s2twp","tw2sp"]
+// mode=(translate ? 's2tw':'tw2s')+(option ? 'p':'')
 
-opencc.convert("汉字", (err, converted) => {
-  console.log(converted)
-});
+// var opencc = new OpenCC(mode+".json")
+
+// opencc.convert("汉字", (err, converted) => {
+//   console.log(converted)
+// });
 document.ondragover = document.ondrop = (ev) => {
   ev.preventDefault()
 }
@@ -122,12 +147,12 @@ function errorHandler(evt) {
   }
 }
 
-function translate(fileindex) {
-  var fileString = evt.target.result;
-  opencc.convert(fileString, (err, converted) => {
-    // console.log(converted)
-  })
-  {
-    console.log("start converting")
-  }
-}
+// function translate(fileindex) {
+//   var fileString = evt.target.result;
+//   opencc.convert(fileString, (err, converted) => {
+//     // console.log(converted)
+//   })
+//   {
+//     console.log("start converting")
+//   }
+// }

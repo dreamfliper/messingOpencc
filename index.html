@@ -13,21 +13,21 @@
   <script src="./lib/vue.js"></script>
   <body>
   <h2>subTranslate</h2>
-  <div class="row">
+  <div id="setting" class="row">
   <!-- <fieldset class="col-6"> -->
   <div class="switch-toggle switch-ios col-6">
-    <input id="totchinese" name="view" type="radio" checked>
-    <label for="totchinese" onclick="">簡繁</label>
-    <input id="toschinese" name="view" type="radio">
-    <label for="toschinese" onclick="">繁簡</label>
+    <input id="s2tw" name="view" type="radio" checked>
+    <label for="s2tw" @click="s2tw()">簡繁</label>
+    <input id="tw2s" name="view" type="radio">
+    <label for="tw2s" @click="tw2s()">繁簡</label>
     <a></a>
   </div>
   <!-- </fieldset> -->
   <label class="switch-light switch-ios col-left-4 col-2" onclick="">
     <input type="checkbox">
     <span>
-      <span>詞彙轉換</span>
-      <span>詞彙轉換</span>
+      <span @click="pToggle()">詞彙轉換</span>
+      <span @click="pToggle()">詞彙轉換</span>
       <a></a>
     </span>
   </label>
