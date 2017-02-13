@@ -17,6 +17,20 @@ html,body{
 // h2{
 // 	text-align: center;
 // }
+#submit{
+	position: fixed;
+	bottom: 8%;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+}
+#clear{
+	position: fixed;
+	bottom: 2%;
+	width: 80%;
+	left: 10%;
+	text-align: center;
+}
 .switch-toggle{
 	height: 32px;
 }
@@ -31,10 +45,13 @@ html,body{
   display: table;
   transition: opacity .3s ease;
 }
+pre{
+	margin-top: 10%;
+}
 .modal-container {
 	position: fixed;
   width: 80%;
-  height: 90%;
+  height: 85%;
   top: 10%;
   right: 0px;
   margin: 0px auto;
@@ -46,4 +63,5 @@ html,body{
   text-overflow:ellipsis;
   overflow:scroll;
 }
+
 

@@ -55,11 +55,13 @@
   <!-- TODO:transition -->
   <div class="modal-mask" @click="toggle">
     <div class="modal-container">
-    <header class="nav">Content preview</header>
+    <header class="nav">內容預覽</header>
     <pre>{{getSelectedText()}}</pre>
   </div>
   </div>
   </div>
+  <button id="submit" class="button button-green" @click="submit">全部轉換</button>
+  <button id="clear" class="button button-red" @click="clear">清除</button>
   </body>
   <script>
     // You can also require other files to run in this process

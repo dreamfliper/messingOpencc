@@ -3,6 +3,7 @@
 // All of the Node.js APIs are available in this process.
 var OpenCC = require('opencc')
 var mode='s2tw',pflag=false
+var fs = require('fs');
 
 var store = {
   debug: true,
@@ -21,8 +22,18 @@ var store = {
   getselected(){
     return this.state.selected
   },
-  translateselected(){
-    this.files[this.getselected()].text=opencc.convertSync(this.files[this.getselected()].text)
+  updatecontent(content){
+    this.files[this.state.selected].text=content
+  },
+  savealltranslate(){
+    this.files.forEach(function (file) {
+      fs.writeFile(file.add, file.text, function(err) {
+       if(err) {
+        return console.log(err);
+        }
+      console.log("The file was saved!");
+      });
+    })
   },
   files: [
     // { name: 'Learn JavaScript' ,add: 'sample1',text:'sample1'},
@@ -30,19 +41,26 @@ var store = {
   ],
 }
 var totalfiles=0
-
+function clearall(){
+    store.state.showcontent=0
+    store.state.selected=0
+    store.files.splice(0,store.files.length)
+    totalfiles=0
+    console.log('clear')
+}
 
 var tableview = new Vue({
   el: '#tableview',
   data: {
     files:store.files,
-    sharestate:store.state.showcontent,
+    totalfiles:totalfiles,
+    sharestate:store.state,
   },
   methods:{
     show:function (index,event) {
       store.changeselected(index)
       store.toggle()
-    }
+    },
   }
 })
 
@@ -54,12 +72,11 @@ var content = new Vue({
   },
   methods:{
     getSelectedText:function () {
-      var tmode
-      tmode=(pflag) ? mode+'p':mode
-      // store.translateselected()
+      var tmode=pflag ? mode+'p':mode
       console.log(tmode)
       var opencc= new OpenCC(tmode+".json")
-      return opencc.convertSync(store.files[store.getselected()].text)
+      store.updatecontent(opencc.convertSync(store.files[store.getselected()].text))
+      return store.files[store.getselected()].text
     },
     toggle:function(){
       store.toggle()
@@ -89,6 +106,22 @@ var setting = new Vue({
   }
 })
 
+var submit = new Vue({
+  el: "#submit",
+  methods:{
+    submit:function () {
+      store.savealltranslate()
+    }
+  }
+})
+var clear = new Vue({
+  el: "#clear",
+  methods:{
+    clear:function () {
+      clearall()
+    }
+  }
+})
 
 // var mode = ["s2tw","tw2s","s2twp","tw2sp"]
 // mode=(translate ? 's2tw':'tw2s')+(option ? 'p':'')
@@ -103,13 +136,13 @@ document.ondragover = document.ondrop = (ev) => {
 }
 
 document.body.ondrop = (ev) => {
-  console.log(ev.dataTransfer.files[totalfiles].name)
+  console.log(ev.dataTransfer.files[0].name)
   ev.preventDefault()
   store.files.push(
-    {name:ev.dataTransfer.files[totalfiles].name,
-      add:ev.dataTransfer.files[totalfiles].path,
+    {name:ev.dataTransfer.files[0].name,
+      add:ev.dataTransfer.files[0].path,
      text:''})
-  getAsText(ev.dataTransfer.files[totalfiles])
+  getAsText(ev.dataTransfer.files[0])
 }
 
 function getAsText(readFile) {
