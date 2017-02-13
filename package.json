@@ -1,11 +1,13 @@
 {
   "name": "subTranlate",
-  "version": "0.1",
+  "version": "0.1.0",
   "description": "A Electron application for opencc",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "postinstall": "./node_modules/.bin/electron-rebuild"
+    "postinstall": "./node_modules/.bin/electron-rebuild",
+    "pack": "build --dir",
+    "dist": "build"
   },
   "repository": {
     "type": "git",
@@ -21,6 +23,27 @@
     "electron": "^1.4.1",
     "electron-builder": "^13.6.0",
     "electron-rebuild": "^1.5.7"
+  },
+  "build": {
+    "appId": "dreamfliper.subtranlate",
+    "mac": {
+      "contents": [
+        {
+          "x": 130,
+          "y": 220
+        },
+        {
+          "x": 410,
+          "y": 220,
+          "type": "link",
+          "path": "/Applications"
+        }
+      ],
+      "category": "your.app.category.type"
+    },
+    "win": {
+      "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
+    }
   },
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
