@@ -34,6 +34,7 @@ var store = {
       console.log("The file was saved!");
       });
     })
+    clearall()
   },
   files: [
     // { name: 'Learn JavaScript' ,add: 'sample1',text:'sample1'},
@@ -136,13 +137,18 @@ document.ondragover = document.ondrop = (ev) => {
 }
 
 document.body.ondrop = (ev) => {
-  console.log(ev.dataTransfer.files[0].name)
   ev.preventDefault()
-  store.files.push(
-    {name:ev.dataTransfer.files[0].name,
-      add:ev.dataTransfer.files[0].path,
-     text:''})
-  getAsText(ev.dataTransfer.files[0])
+  for(var index in ev.dataTransfer.files){
+    if (index !== 'length' && index!=='item') {
+      store.files.push(
+        {name:ev.dataTransfer.files[index].name,
+          add:ev.dataTransfer.files[index].path,
+         text:''})
+      getAsText(ev.dataTransfer.files[index])
+      console.log('file'+index+'finished')
+    }
+    
+  }
 }
 
 function getAsText(readFile) {
@@ -168,7 +174,7 @@ function updateProgress(evt) {
 }
 
 function loaded(evt) {
-  console.log(typeof(evt.currentTarget.result))
+  // console.log(evt.currentTarget.result)
   store.files[totalfiles].text=evt.currentTarget.result
   totalfiles++
 }
