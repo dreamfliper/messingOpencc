@@ -27,11 +27,13 @@ var store = {
   },
   savealltranslate(){
     this.files.forEach(function (file) {
-      fs.writeFile(file.add, file.text, function(err) {
+      var tmode=pflag ? mode+'p':mode
+      var opencc= new OpenCC(tmode+".json")
+      fs.writeFile(file.add, opencc.convertSync(file.text), function(err) {
        if(err) {
         return console.log(err);
         }
-      console.log("The file was saved!");
+      console.log("The file was translated and saved!");
       });
     })
     clearall()
@@ -76,8 +78,7 @@ var content = new Vue({
       var tmode=pflag ? mode+'p':mode
       console.log(tmode)
       var opencc= new OpenCC(tmode+".json")
-      store.updatecontent(opencc.convertSync(store.files[store.getselected()].text))
-      return store.files[store.getselected()].text
+      return opencc.convertSync(store.files[store.getselected()].text)
     },
     toggle:function(){
       store.toggle()
