@@ -7,7 +7,7 @@
 * 批次對文字檔簡繁轉換
 * 支援預覽
 
-**簡介**
+**簡介**
 
 這是一個使用[vue.js](https://vuejs.org)+[kickstart](http://getkickstart.com)+[electron](http://electron.atom.io)作為[opencc](https://github.com/BYVoid/OpenCC)的GUI工具
 
