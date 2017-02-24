@@ -6,8 +6,8 @@
   "scripts": {
     "start": "electron .",
     "postinstall": "./node_modules/.bin/electron-rebuild",
-    "pack": "build --dir",
-    "dist": "build"
+    "dist": "build",
+    "rebuild":"./node_modules/.bin/electron-rebuild"
   },
   "repository": {
     "type": "git",
@@ -21,29 +21,7 @@
   "license": "CC0-1.0",
   "devDependencies": {
     "electron": "^1.4.1",
-    "electron-builder": "^13.6.0",
     "electron-rebuild": "^1.5.7"
-  },
-  "build": {
-    "appId": "dreamfliper.subtranlate",
-    "mac": {
-      "contents": [
-        {
-          "x": 130,
-          "y": 220
-        },
-        {
-          "x": 410,
-          "y": 220,
-          "type": "link",
-          "path": "/Applications"
-        }
-      ],
-      "category": "your.app.category.type"
-    },
-    "win": {
-      "iconUrl": "http://eatodo.s3.amazonaws.com/icon.ico"
-    }
   },
   "bugs": {
     "url": "https://github.com/electron/electron-quick-start/issues"
