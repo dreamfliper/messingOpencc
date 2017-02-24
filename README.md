@@ -1,40 +1,29 @@
-# electron-quick-start
+# subTranslate
 
-**Clone and run for a quick way to see Electron in action.**
+*此項目尚未完善，僅完成基本功能*
 
-This is a minimal Electron application based on the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start) within the Electron documentation.
+**功能**
 
-**Use this app along with the [Electron API Demos](http://electron.atom.io/#get-started) app for API code examples to help you get started.**
+* 批次對文字檔簡繁轉換
+* 支援預覽
 
-A basic Electron application needs just these files:
+**簡介**
 
-- `package.json` - Points to the app's main file and lists its details and dependencies.
-- `main.js` - Starts the app and creates a browser window to render HTML. This is the app's **main process**.
-- `index.html` - A web page to render. This is the app's **renderer process**.
+這是一個使用[vue.js](https://vuejs.org)+[kickstart](http://getkickstart.com)+[electron](http://electron.atom.io)作為[opencc](https://github.com/BYVoid/OpenCC)的GUI工具
 
-You can learn more about each of these components within the [Quick Start Guide](http://electron.atom.io/docs/tutorial/quick-start).
+## 使用
 
-## To Use
+1. 拖曳檔案至視窗中
+2. 點擊該列可以預覽
+3. 點擊`全部轉換`。__注意：考慮到使用流程順暢與失敗成本，轉換前不會警告覆蓋!__
 
-To clone and run this repository you'll need [Git](https://git-scm.com) and [Node.js](https://nodejs.org/en/download/) (which comes with [npm](http://npmjs.com)) installed on your computer. From your command line:
+**開發**
 
 ```bash
-# Clone this repository
-git clone https://github.com/electron/electron-quick-start
-# Go into the repository
-cd electron-quick-start
-# Install dependencies
 npm install
-# Run the app
 npm start
+#if an error occur after adding new npm package
+npm run rebuild
 ```
 
-Learn more about Electron and its API in the [documentation](http://electron.atom.io/docs/).
-
-## Other Example Apps
-
-For more example apps, see the
-[list of boilerplates](http://electron.atom.io/community/#boilerplates)
-created by the awesome electron community.
-
-#### License [CC0 1.0 (Public Domain)](LICENSE.md)
+#### 
