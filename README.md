@@ -1,6 +1,7 @@
 # subTranslate
 
 *此項目尚未完善，僅完成基本功能*
+*全部重新改寫[新專案](https://github.com/dreamfliper/mashingopencc)*
 
 **功能**
 
